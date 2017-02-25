@@ -1,5 +1,8 @@
 # Contour-Extraction-from-noisy-image
 
+-Simple Image Processing Project
+
+
 module 1: Convert noisy colour image to binary image
           colour image -> greyscale image -> binary image
           
