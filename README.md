@@ -10,7 +10,7 @@ module 2: point extraction
           <br>extract the pixels positions of object image(colour of object image is white), and save it in a two dimensional Array...
 
 module 3: Geometr<br>ic Graph Construction 
-          <br>w<br>ith above points
+ &nbsp         <br>with above points
           <br>with threshold value root(2)
           
 module 4: Point Linking of the contour of object image
