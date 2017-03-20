@@ -400,7 +400,6 @@ public class PointLink{
         }
         
         
-        //         markv[x2][y2]=2;
         PL[++pInd][0]=x2;
         PL[pInd][1]=y2;
         img.setRGB(x2,y2, p);
@@ -415,19 +414,212 @@ public class PointLink{
     System.out.println("\n\n\n");*/
     
     
-    for(int i = 0; i <= pInd; i++){
-      
-      System.out.println(PL[i][0]+"  "+PL[i][1]);
-    }
-        
+     
+    
 //write image
     try{
-      f = new File("/home/jubin/Pictures/data6pointlinking.png");
+      f = new File("/home/jubin/Pictures/OUTPUT_point_linking.png");
       ImageIO.write(img, "png", f);
     }catch(IOException e){
       System.out.println(e);
     }
-   // System.out.println(Arrays.deepToString(whitePositions));
+    
+    
+    int b = colorToRGB(255, 0, 0,0);
+    int w = colorToRGB(255, 255, 255,255);
+    for(int i=2;i<=pInd;i=i+1)
+    {
+        x1=PL[i-2][0];
+        y1=PL[i-2][1];
+        x2=PL[i-1][0];
+        y2=PL[i-1][1];
+        x3=PL[i][0];
+        y3=PL[i][1];
+        
+        if(x3>x1)
+        {
+            if(y3>y1)
+            {
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        //System.out.println("1");
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+            }
+            else if(y3==y1)
+            {
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        //System.out.println("2");
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+                else if(y2==y1+1)
+                {
+                    img.setRGB(x2,y2, w);
+                    img.setRGB(x2,y2-1, p);
+                }
+                else if(y2==y1-1)
+                {
+                    img.setRGB(x2,y2, b);
+                    img.setRGB(x2,y2+1, p);
+                }
+            }
+            else
+            {  
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        //System.out.println("3");
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+            }
+        }
+        else if(x1==x3)
+        {
+            
+            if(y3>y1)
+            {
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        //System.out.println("4");
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+                else if(x2==x1+1)
+                {
+                    img.setRGB(x2,y2, b);
+                    img.setRGB(x2-1,y2, p);
+                }
+                else if(x2==x1-1)
+                {
+                    img.setRGB(x2,y2, w);
+                    img.setRGB(x2+1,y2, p);
+                }
+                
+            }
+            else
+            {
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        //System.out.println("5"+j);
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+                else if(x2==x1+1)
+                {
+                    img.setRGB(x2,y2, w);
+                    img.setRGB(x2-1,y2, p);
+                }
+                else if(x2==x1-1)
+                {
+                    img.setRGB(x2,y2,b);
+                    img.setRGB(x2+1,y2, p);
+                }
+            }
+            
+        }
+        else
+        {
+            if(y3>y1)
+            {
+             
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+                
+            }
+            else if(y3==y1)
+            {
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+                else if(y2==y1+1)
+                {
+                    img.setRGB(x2,y2, b);
+                    img.setRGB(x2,y2-1, p);
+                }
+                else if(y2==y1-1)
+                {
+                    img.setRGB(x2,y2, w);
+                    img.setRGB(x2,y2+1, p);
+                }
+            }
+            else
+            {
+                if(Math.abs(x1-x3)<2 && Math.abs(y1-y3)<2)
+                {
+                    for(int j=i-1;j<pInd;j++)
+                    {
+                        PL[j][0]=PL[j+1][0];
+                        PL[j][1]=PL[j+1][1];
+                    }
+                    pInd--;
+                    i=i-2;
+                    img.setRGB(x2,y2, b);
+                }
+                          
+            }
+            
+        }
+        System.out.println(i);
+    }
+          
+    //write image
+    try{
+      f = new File("/home/jubin/Pictures/OUTPUT_contour_simplification.png");
+      ImageIO.write(img, "png", f);
+    }catch(IOException e){
+      System.out.println(e);
+}
   }//main() ends here
   
   private static int colorToRGB(int alpha, int red, int green, int blue) {
