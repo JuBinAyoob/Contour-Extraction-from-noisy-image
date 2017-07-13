@@ -17,4 +17,4 @@ module 4: Point Linking of the contour of object image
 <br>=>     Choosing the edges which have By highest turnaround angle
           
 module 5: Contour Simplification
-<br>=>     Removing Unwanted Points...(points that formed due to noise in image)
+<br>=>     Removing Unwanted Points...(points that formed due to noise in boundary of image)
